@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css.css">
+</head>
+<body>
+    <div class="container">
+        <div class="title">
+            
+            <h1>Ma To-Do List</h1>
+
+            <div class="input-container"> 
+                <input type="text" placeholder="Ajouter une tâche" id="todo-input">
+                <button id="add-btn">Ajouter</button>
+            </div>
+
+            <div class="task-section">
+
+                <ul class="todo-list">
+                <!--les tâche seront ajoutés ici-->
+                </ul>
+
+                <button id="clear-btn" >Tout supprimer</button>
+
+                <p id="task-counter">Totale :0 | Terminées: 0</p>
+                
+            </div>
+        </div>
+    </div>
+    <script>
+        const input = document.getElementById('todo-input');
+        const addBtn = document.getElementById('add-btn');
+        const clearBtn = document.getElementById('clear-btn');
+        const todoList = document.querySelector('.todo-list');
+        const taskCounter = document.getElementById('task-counter');
+
+        document.addEventListener('DOMContentLoaded', loadTasks);
+
+        addBtn.addEventListener('click',()=>{
+            const task = input.value.trim();
+            if(task){
+                addTask(task);
+                saveTasks();
+                updateCounter();
+            }
+        });
+
+        clearBtn.addEventListener('click',()=>{
+            todoList.innerHTML='';
+            saveTasks();
+            updateCounter();
+        });
+
+        todoList.addEventListener('click',(e)=>{
+            if(e.target.classList.contains('checkbox')){
+                e.target.classList.toggle('checked');
+                e.target.parentElement.classList.toggle('completed');
+                saveTasks();
+                updateCounter();
+            }
+            if(e.target.classList.contains('delete-btn')){
+                e.target.parentElement.remove();
+                saveTasks();
+                updateCounter();
+            }
+        });
+
+        function addTask(task, completed=false){
+            const li = document.createElement('li');
+            li.innerHTML = `
+        <span class="checkbox ${completed ? 'checked' : ''}"></span>
+        <span>${task}</span>
+        <button class="delete-btn">X</button>
+    `;
+
+
+            if (completed) li.classList.add('completed');
+            todoList.appendChild(li);
+            input.value='';
+            updateCounter();
+
+            
+        }
+        function saveTasks(){
+            const tasks=[];
+            document.querySelectorAll('.todo-list li').forEach(li=>{
+                tasks.push({
+                    text : li.querySelector('span:nth-child(2)').textContent,
+                    completed:li.classList.contains('completed')
+                });
+            });
+            localStorage.setItem('tasks',JSON.stringify(tasks));
+  
+        }
+
+        function loadTasks(){
+            const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+            tasks.forEach(task => addTask(task.text,task.completed));
+            updateCounter();
+        }
+        function updateCounter(){
+            const total = todoList.querySelectorAll('li').length;
+            const completed = todoList.querySelectorAll('.completed').length;
+            if(total<=1){
+                taskCounter.textContent = `Totale: ${total} | Terminées: ${completed}`;
+        }else{
+            taskCounter.textContent = `Totales: ${total} | Terminées: ${completed}`;
+        }
+        }
+    </script>
+</body>
+</html>

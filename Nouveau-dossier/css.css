@@ -1,0 +1,167 @@
+/*kholal bou bakh l:3  l:162 */
+/*pour cibler tout les elements*/
+*{
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;/*pour que aucune bordure ne depasse */
+}
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #f5f5f5, #3b93eb); /* Dégradé sobre */
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Conteneur principal */
+.todo-container {
+    width: 90%; 
+    margin: 50px auto;
+    max-width: 800px;
+    background: #ffffff; 
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); 
+    display: flex;
+    
+}
+
+/* Titre */
+.title h1 {
+    text-align: center;
+    font-size: 28px;
+    color: #343a40; 
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* Conteneur de l'entrée */
+.input-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.input-container input {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-container input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+.input-container button {
+    padding: 12px 20px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.input-container button:hover {
+    background: #0056b3;
+}
+
+/* Liste des tâches */
+.task-section {
+    width: 100%;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 15px;
+    background: #f8f9fa;
+}
+
+.todo-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.todo-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #e9ecef;
+    padding: 10px 0;
+    position: relative;
+    transition: background 0.3s ease;
+}
+
+.todo-list li:hover {
+    background: rgba(0, 123, 255, 0.05);
+}
+
+/* Case à cocher */
+.todo-list li .checkbox {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #007bff;
+    border-radius: 50%;
+    margin-right: 10px;
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    transition: background 0.3s ease;
+}
+
+.todo-list li .checkbox.checked::after {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 12px;
+    height: 12px;
+    background: #007bff;
+    border-radius: 50%;
+}
+
+/* Texte barré */
+.todo-list li.completed span {
+    text-decoration: line-through;
+    color: #6c757d;
+}
+
+/* Bouton supprimer */
+.todo-list li .delete-btn {
+    background: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s ease;
+}
+
+.todo-list li .delete-btn:hover {
+    background: #b02a37;
+}
+
+/* Bouton Tout supprimer */
+#clear-btn {
+    padding: 12px 20px;
+    background: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor:pointer;
+}
+/*Voici ce aue j'y ai ajouter*/
+.container{
+ padding: 50px;
+ background-color: white;
+ border-radius: 30px;
+}
