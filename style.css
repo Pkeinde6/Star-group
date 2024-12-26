@@ -315,11 +315,12 @@ header {
     justify-content: center;
     padding: 10px;
     z-index: 100;
+    width:100%;
 }
 
 .table-service th {
     padding: 10px;
-    width: 30%;
+    width: 25%;
 }
 
 .table-service th a {
@@ -334,7 +335,7 @@ header {
 
 th p {
     display: inline-block;
-    width: 350px;
+    width: 100%;
     font-size: small;
 }
 
@@ -348,7 +349,7 @@ footer{
 .containt {
     position: relative;
     width: 100%;
-    height: 55em;
+    height: 55vh; /* Ajuster à la hauteur du viewport */
     overflow: hidden;
 }
 
@@ -366,13 +367,13 @@ footer{
 .slide-p img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* Garder le ratio d'aspect de l'image */
 }
 
 .prev-x, .next-x {
     position: absolute;
-    bottom: -280%;
-    transform: translateY(-50%);
+    top: 50%; /* Centrer verticalement */
+    transform: translateY(-50%); /* Pour compenser la hauteur du bouton */
     background-color: rgba(0, 0, 0, 0);
     color: rgba(28, 40, 199, 0.829);
     border: none;
@@ -384,12 +385,12 @@ footer{
     left: 10px;
 }
 
-.prev-x:hover{
+.prev-x:hover {
     color: rgba(0, 0, 0, 0.9);
     font-size: 50px;
 }
 
-.next-x:hover{
+.next-x:hover {
     color: rgba(255, 255, 255, 0.9);
     font-size: 50px;
 }
@@ -398,32 +399,30 @@ footer{
     right: 10px;
 }
 
-.transition{
+.transition {
     width: 100%;
     height: 100%;
     opacity: 1;
     background-color: #ffffff;
     padding: 20px;
     text-align: center;
-
 }
-.far{
-    background-color:  #0368ef;
+
+.far {
+    background-color: #0368ef;
     padding: 18px;
-    margin-left: 35% ;
+    margin-left: 35%;
     margin-right: 35%;
     border-radius: 50px;
     color: white;
     font-weight: bolder;
     font-size: larger;
 }
-  
 
-
-
+/* Pagination */
 .pagination-x {
     position: absolute;
-    bottom: -322%;
+    bottom: 10px; /* Collé en bas du conteneur */
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -444,4 +443,89 @@ footer{
 .pagination-x .active {
     background-color: hsl(230, 78%, 83%);
     opacity: 1;
+}
+
+/* Media Queries pour Responsivité */
+@media (max-width: 768px) {
+    .containt {
+        height: vh; /* Augmenter la hauteur pour les écrans plus petits */
+    }
+
+    .prev-x, .next-x {
+        font-size: 50px; /* Réduire la taille des boutons */
+    }
+
+    .pagination-x {
+        bottom: 5%; /* Ajuster la position de la pagination */
+    }
+
+    .pagination-x span {
+        height: 8px;
+        width: 8px;
+        margin: 0 3px; /* Réduire la taille des points de pagination */
+    }
+
+    .far {
+        margin-left: 20%;
+        margin-right: 20%;
+        font-size: medium; /* Ajuster la taille du bouton */
+    }
+}
+
+@media (max-width: 480px) {
+    .containt {
+        height: 80vh; /* Augmenter la hauteur pour les appareils mobiles */
+    }
+
+    .prev-x, .next-x {
+        font-size: 40px; /* Réduire encore plus les boutons */
+    }
+
+    .pagination-x {
+        bottom: 3%; /* Positionner la pagination encore plus bas sur mobile */
+    }
+
+    .pagination-x span {
+        height: 6px;
+        width: 6px; /* Réduire les points de pagination */
+    }
+
+    .far {
+        margin-left: 15%;
+        margin-right: 15%;
+        font-size: small; /* Réduire la taille du bouton */
+    }
+}
+
+.t-shirt{
+    margin: 50px;
+}
+
+.t-shirt tr{
+    width: 100%;
+}
+
+.t-shirt tr .t-shirt-first{
+    width: 60%;
+}
+
+.t-shirt tr .t-shirt-second{
+    width: 40%;
+}
+
+.t-shirt-x{
+    margin: 50px;
+}
+
+.t-shirt-x tr{
+width: 100%;
+
+}
+
+.t-shirt-x tr .t-shirt-first{
+    width: 40%;
+}
+
+.t-shirt-x tr .t-shirt-second{
+    width: 60%;
 }

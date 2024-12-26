@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Star-group</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://getbootstrap.com/docs/5.3/assets/css/docs.css">
     <script type="text/javascript" src="script.js" defer></script>
 </head>
 <body>
@@ -134,29 +135,96 @@
         <div class="containt">
 
             <div class="slide-p">
-                <img src="Nouveau-dossier/1.jpg" alt="">
+                <img src="Nouveau-dossier/1.jpg" width="100%" alt="">
             </div>
 
             <div class="slide-p">
-                <img src="Nouveau-dossier/2.jpg" alt="">
+                <img src="Nouveau-dossier/2.jpg" width="100%" alt="">
             </div>
 
             <div class="slide-p">
-                <img src="Nouveau-dossier/3.jpg" alt="">
+                <img src="Nouveau-dossier/3.jpg" width="100%" alt="">
             </div>
 
             <div class="slide-p">
-                <img src="Nouveau-dossier/4.jpg" alt="">
+                <img src="Nouveau-dossier/4.jpg"  alt="">
             </div>
 
         </div>
         
          <!-- Flèches de navigation -->
-        <button class="prev-x" id="prev-x">&#10094;</button>
+         <button class="prev-x" id="prev-x">&#10094;</button>
         <button class="next-x" id="next-x">&#10095;</button>
 
         <!-- Bulles de pagination -->
         <div class="pagination-x" id="pagination-x"></div>
+    </section>
+    <section class="pp">
+        <table class="t-shirt" >
+            <tr>
+                <th>
+                    <h1 style="font-size: 40px;">Notre collection de t-shirt</h1>
+                    <p>Notre entreprise propose des services professionnels de graphisme et de design graphique pour aider à la création d'une identité visuelle unique et impactante... <a href="">Voir plus</a></p>
+                </th>
+                <th>
+                    <img src="Nouveau-dossier\Front vert.png" width="80%" alt="">
+                </th>
+            </tr>
+        </table>
+
+        <table class="t-shirt-x" >
+            <tr>
+                <th>
+                <img src="Nouveau-dossier\Carte visite star group mockup.png"  width="100%" alt="">
+                 
+                </th>
+                <th>
+                <h1 style="font-size: 40px;">Notre collection de t-shirt</h1>
+                <p>Notre entreprise propose des services professionnels de graphisme et de design graphique pour aider à la création d'une identité visuelle unique et impactante... <a href="">Voir plus</a></p>
+                </th>
+            </tr>
+        </table>
+
+        <table class="t-shirt" >
+            <tr>
+                <th class="t-shirt-first">
+                    <span>
+                        <h1 style="font-size: 35px;">Notre collection de t-shirt</h1>
+                        <p>Notre entreprise propose des services professionnels de graphisme et de design graphique pour aider à la création d'une identité visuelle unique et impactante... <a href="">Voir plus</a></p>
+                    </span>
+                </th>
+                <th class="t-shirt-second">
+                    <img src="Nouveau-dossier\Cap Mockup.png" width="100%" alt="">
+                </th>
+            </tr>
+        </table>
+
+        <table class="t-shirt-x" >
+            <tr>
+                <th class="t-shirt-first">
+                <img src="Nouveau-dossier\Calendrier.png"  width="100%" alt="">
+                 
+                </th>
+                <th class="t-shirt-second">
+                <h1 style="font-size: 40px;">Notre collection de t-shirt</h1>
+                <p>Notre entreprise propose des services professionnels de graphisme et de design graphique pour aider à la création d'une identité visuelle unique et impactante... <a href="">Voir plus</a></p>
+                </th>
+            </tr>
+        </table>
+
+        <table class="t-shirt" >
+            <tr>
+                <th class="t-shirt-first">
+                <h1 style="font-size: 40px;">Notre collection de t-shirt</h1>
+                    <p>Notre entreprise propose des services professionnels de graphisme et de design graphique pour aider à la création d'une identité visuelle unique et impactante... <a href="">Voir plus</a></p>
+                </th>
+                <th class="t-shirt-second">
+                    <img src="Nouveau-dossier\Front Flat.png" width="100%" alt="">
+                </th>
+            </tr>
+        </table>
+        </div>
+        
     </section>
 
     <footer>STAR GROUP | Au plaisir d'innover ! Dakar, Sénégal</footer>

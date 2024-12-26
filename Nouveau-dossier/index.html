@@ -1,115 +1,142 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css.css">
+    <title>Disparition et Réapparaître des Cercles et des Lignes</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: rgb(0, 0, 0);
+        }
+
+        canvas {
+            display: block;
+        }
+
+    </style>
 </head>
 <body>
-    <div class="container">
-        <div class="title">
-            
-            <h1>Ma To-Do List</h1>
 
-            <div class="input-container"> 
-                <input type="text" placeholder="Ajouter une tâche" id="todo-input">
-                <button id="add-btn">Ajouter</button>
-            </div>
+    <canvas id="canvas"></canvas>
 
-            <div class="task-section">
-
-                <ul class="todo-list">
-                <!--les tâche seront ajoutés ici-->
-                </ul>
-
-                <button id="clear-btn" >Tout supprimer</button>
-
-                <p id="task-counter">Totale :0 | Terminées: 0</p>
-                
-            </div>
-        </div>
-    </div>
     <script>
-        const input = document.getElementById('todo-input');
-        const addBtn = document.getElementById('add-btn');
-        const clearBtn = document.getElementById('clear-btn');
-        const todoList = document.querySelector('.todo-list');
-        const taskCounter = document.getElementById('task-counter');
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        const cercles = [];
+        const numCercles = 200;
+        const seuilDistance = 150; // Distance à partir de laquelle les cercles sont reliés
+        let sourisX = 0;
+        let sourisY = 0;
+        const rayonDisparition = 200;  // Rayon où les cercles et les lignes réapparaissent (200px)
 
-        document.addEventListener('DOMContentLoaded', loadTasks);
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
 
-        addBtn.addEventListener('click',()=>{
-            const task = input.value.trim();
-            if(task){
-                addTask(task);
-                saveTasks();
-                updateCounter();
+        // Classe Cercle
+        class Cercle {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.radius = 5;  // Rayon du cercle
+                this.dx = Math.random() * 2 - 1; // Vitesse en x
+                this.dy = Math.random() * 2 - 1; // Vitesse en y
+                this.visible = true; // Visibilité du cercle
             }
-        });
 
-        clearBtn.addEventListener('click',()=>{
-            todoList.innerHTML='';
-            saveTasks();
-            updateCounter();
-        });
-
-        todoList.addEventListener('click',(e)=>{
-            if(e.target.classList.contains('checkbox')){
-                e.target.classList.toggle('checked');
-                e.target.parentElement.classList.toggle('completed');
-                saveTasks();
-                updateCounter();
+            // Dessiner le cercle
+            dessiner() {
+                if (this.visible) {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = 'green';
+                    ctx.fill();
+                    ctx.closePath();
+                }
             }
-            if(e.target.classList.contains('delete-btn')){
-                e.target.parentElement.remove();
-                saveTasks();
-                updateCounter();
+
+            // Mettre à jour la position du cercle
+            mettreAJour() {
+                this.x += this.dx;
+                this.y += this.dy;
+
+                if (this.x - this.radius < 0 || this.x + this.radius > canvas.width) this.dx = -this.dx;
+                if (this.y - this.radius < 0 || this.y + this.radius > canvas.height) this.dy = -this.dy;
             }
-        });
 
-        function addTask(task, completed=false){
-            const li = document.createElement('li');
-            li.innerHTML = `
-        <span class="checkbox ${completed ? 'checked' : ''}"></span>
-        <span>${task}</span>
-        <button class="delete-btn">X</button>
-    `;
+            // Vérifier la distance par rapport à la souris et gérer la visibilité
+            verifierVisibilite(sourisX, sourisY) {
+                const dx = sourisX - this.x;
+                const dy = sourisY - this.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
 
-
-            if (completed) li.classList.add('completed');
-            todoList.appendChild(li);
-            input.value='';
-            updateCounter();
-
-            
+                if (distance <= rayonDisparition) {
+                    this.visible = true; // Le cercle devient visible
+                } else {
+                    this.visible = false; // Le cercle devient invisible
+                }
+            }
         }
-        function saveTasks(){
-            const tasks=[];
-            document.querySelectorAll('.todo-list li').forEach(li=>{
-                tasks.push({
-                    text : li.querySelector('span:nth-child(2)').textContent,
-                    completed:li.classList.contains('completed')
-                });
+
+        // Créer les cercles
+        for (let i = 0; i < numCercles; i++) {
+            cercles.push(new Cercle(Math.random() * canvas.width, Math.random() * canvas.height));
+        }
+
+        // Suivi de la position de la souris
+        document.addEventListener('mousemove', (event) => {
+            sourisX = event.clientX;
+            sourisY = event.clientY;
+
+            // Vérifier la visibilité de chaque cercle en fonction de la souris
+            cercles.forEach(cercle => {
+                cercle.verifierVisibilite(sourisX, sourisY);
             });
-            localStorage.setItem('tasks',JSON.stringify(tasks));
-  
+        });
+
+        // Relier les cercles proches et gérer la visibilité des lignes
+        function dessinerLignes() {
+            for (let i = 0; i < cercles.length; i++) {
+                for (let j = i + 1; j < cercles.length; j++) {
+                    const cercle1 = cercles[i];
+                    const cercle2 = cercles[j];
+
+                    const dx = cercle2.x - cercle1.x;
+                    const dy = cercle2.y - cercle1.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    // Calculer la distance entre la souris et les deux cercles pour la visibilité de la ligne
+                    const distCercle1 = Math.sqrt((sourisX - cercle1.x) ** 2 + (sourisY - cercle1.y) ** 2);
+                    const distCercle2 = Math.sqrt((sourisX - cercle2.x) ** 2 + (sourisY - cercle2.y) ** 2);
+
+                    // Si la distance entre les cercles est inférieure au seuil, et qu'ils sont proches de la souris
+                    if (distance < seuilDistance && distCercle1 <= rayonDisparition && distCercle2 <= rayonDisparition) {
+                        ctx.beginPath();
+                        ctx.moveTo(cercle1.x, cercle1.y);
+                        ctx.lineTo(cercle2.x, cercle2.y);
+                        ctx.strokeStyle = 'rgba(62, 207, 127, 0.5)';
+                        ctx.lineWidth = 1;
+                        ctx.stroke();
+                    }
+                }
+            }
         }
 
-        function loadTasks(){
-            const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-            tasks.forEach(task => addTask(task.text,task.completed));
-            updateCounter();
+        // Animation
+        function animer() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            cercles.forEach(cercle => {
+                cercle.mettreAJour();
+                cercle.dessiner();
+            });
+            dessinerLignes();
+            requestAnimationFrame(animer);
         }
-        function updateCounter(){
-            const total = todoList.querySelectorAll('li').length;
-            const completed = todoList.querySelectorAll('.completed').length;
-            if(total<=1){
-                taskCounter.textContent = `Totale: ${total} | Terminées: ${completed}`;
-        }else{
-            taskCounter.textContent = `Totales: ${total} | Terminées: ${completed}`;
-        }
-        }
+
+        animer();
     </script>
+
 </body>
 </html>
