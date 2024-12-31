@@ -96,7 +96,99 @@
         </table>
        
 
+        <canvas id="canvas"></canvas>
+
+<script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    const carres = [];
+    const numcarres = 200;
+    const seuilDistance = 100; // Distance à partir de laquelle les carres sont reliés à la souris
+    let sourisX = 0;
+    let sourisY = 0; // Rayon où les carres et les lignes réapparaissent (200px)
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    // Fonction pour générer une couleur aléatoire
+    function couleurAleatoire() {
+        const r = Math.floor(Math.random() * 10);
+        const g = Math.floor(Math.random() * 25);
+        const b = Math.floor(Math.random() * 256);
+        return `rgb(${r}, ${g}, ${b})`;
+    }
+
+    // Classe carre
+    class carre {
+        constructor(x, y) {
+            this.x = x;
+            this.y = y;
+            this.size = 10; 
+            this.dx = Math.random() * 2 - 1; // Vitesse en x
+            this.dy = Math.random() * 2 - 1; // Vitesse en y
+            this.couleur = couleurAleatoire(); // Ajouter une couleur aléatoire au carre
+        }
+
+        // Dessiner le carre
+        dessiner() {
+            ctx.fillStyle = this.couleur; // Utiliser la couleur du carre
+            ctx.fillRect(this.x, this.y, this.size, this.size);
+        }
+
+        // Mettre à jour la position du carre
+        mettreAJour() {
+            this.x += this.dx;
+            this.y += this.dy;
+
+            if (this.x < 0 || this.x > canvas.width) this.dx = -this.dx;
+            if (this.y < 0 || this.y > canvas.height) this.dy = -this.dy;
+        }
+    }
+
+    // Créer les carres
+    for (let i = 0; i < numcarres; i++) {
+        carres.push(new carre(Math.random() * canvas.width, Math.random() * canvas.height));
+    }
+
+    // Suivi de la position de la souris
+    canvas.addEventListener('mousemove', (event) => {
+        sourisX = event.clientX;
+        sourisY = event.clientY;
+    });
     
+    // Relier les carres à la souris
+    function dessinerLignes() {
+        for (let i = 0; i < carres.length; i++) {
+            const carre1 = carres[i];
+            const dx = sourisX - carre1.x;
+            const dy = sourisY - carre1.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            // Si la distance entre le carre et la souris est inférieure au seuil
+            if (distance < seuilDistance) {
+                ctx.beginPath();
+                ctx.moveTo(carre1.x + carre1.size / 2, carre1.y + carre1.size / 2);
+                ctx.lineTo(sourisX, sourisY);
+                ctx.strokeStyle = 'rgba(197, 129, 26, 0.5)'; // Couleur des lignes
+                ctx.lineWidth = 1;
+                ctx.stroke();
+            }
+        }
+    }
+
+    // Animation
+    function animer() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        carres.forEach(carre => {
+            carre.mettreAJour();
+            carre.dessiner();
+        });
+        dessinerLignes(); // Seulement dessiner les lignes entre les carres et la souris
+        requestAnimationFrame(animer);
+    }
+
+    animer();
+</script>
     </section>
     <script src="script.js"></script>
 </body>

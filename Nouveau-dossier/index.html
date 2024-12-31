@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Disparition et Réapparaître des Cercles et des Lignes</title>
+    <title>Disparition et Réapparaître des Carres et des Lignes</title>
     <style>
         body {
             margin: 0;
@@ -15,7 +15,6 @@
         canvas {
             display: block;
         }
-
     </style>
 </head>
 <body>
@@ -25,114 +24,104 @@
     <script>
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');
-        const cercles = [];
-        const numCercles = 200;
-        const seuilDistance = 150; // Distance à partir de laquelle les cercles sont reliés
+        const carres = [];
+        const numcarres = 200;
+        const seuilDistance = 150; // Distance à partir de laquelle les carres sont reliés à la souris
+        const seuilapparition = 300; // Rayon où les carres réapparaissent (en px)
         let sourisX = 0;
         let sourisY = 0;
-        const rayonDisparition = 200;  // Rayon où les cercles et les lignes réapparaissent (200px)
 
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
-        // Classe Cercle
-        class Cercle {
+        // Fonction pour générer une couleur aléatoire
+        function couleurAleatoire() {
+            const r = Math.floor(Math.random() * 256);
+            const g = Math.floor(Math.random() * 256);
+            const b = Math.floor(Math.random() * 256);
+            return `rgb(${r}, ${g}, ${b})`;
+        }
+
+        // Classe carre
+        class carre {
             constructor(x, y) {
                 this.x = x;
                 this.y = y;
-                this.radius = 5;  // Rayon du cercle
+                this.size = 10; 
                 this.dx = Math.random() * 2 - 1; // Vitesse en x
                 this.dy = Math.random() * 2 - 1; // Vitesse en y
-                this.visible = true; // Visibilité du cercle
+                this.couleur = couleurAleatoire(); // Couleur aléatoire
+                this.opacity = 0; // Opacité initiale (invisible)
             }
 
-            // Dessiner le cercle
+            // Dessiner le carre
             dessiner() {
-                if (this.visible) {
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                    ctx.fillStyle = 'green';
-                    ctx.fill();
-                    ctx.closePath();
-                }
+                ctx.fillStyle = `rgba(${this.couleur}, ${this.opacity})`; // Utiliser la couleur du carre et son opacité
+                ctx.fillRect(this.x, this.y, this.size, this.size);
             }
 
-            // Mettre à jour la position du cercle
+            // Mettre à jour la position du carre
             mettreAJour() {
                 this.x += this.dx;
                 this.y += this.dy;
 
-                if (this.x - this.radius < 0 || this.x + this.radius > canvas.width) this.dx = -this.dx;
-                if (this.y - this.radius < 0 || this.y + this.radius > canvas.height) this.dy = -this.dy;
+                if (this.x < 0 || this.x > canvas.width) this.dx = -this.dx;
+                if (this.y < 0 || this.y > canvas.height) this.dy = -this.dy;
             }
 
-            // Vérifier la distance par rapport à la souris et gérer la visibilité
-            verifierVisibilite(sourisX, sourisY) {
-                const dx = sourisX - this.x;
-                const dy = sourisY - this.y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-
-                if (distance <= rayonDisparition) {
-                    this.visible = true; // Le cercle devient visible
+            // Mettre à jour l'opacité en fonction de la distance à la souris
+            miseAjourOpacite(distance) {
+                if (distance < seuilapparition) {
+                    this.opacity = 1; // Rendre visible si proche de la souris
                 } else {
-                    this.visible = false; // Le cercle devient invisible
+                    this.opacity = 0; // Sinon, le carre devient invisible
                 }
             }
         }
 
-        // Créer les cercles
-        for (let i = 0; i < numCercles; i++) {
-            cercles.push(new Cercle(Math.random() * canvas.width, Math.random() * canvas.height));
+        // Créer les carres
+        for (let i = 0; i < numcarres; i++) {
+            carres.push(new carre(Math.random() * canvas.width, Math.random() * canvas.height));
         }
 
         // Suivi de la position de la souris
-        document.addEventListener('mousemove', (event) => {
+        canvas.addEventListener('mousemove', (event) => {
             sourisX = event.clientX;
             sourisY = event.clientY;
-
-            // Vérifier la visibilité de chaque cercle en fonction de la souris
-            cercles.forEach(cercle => {
-                cercle.verifierVisibilite(sourisX, sourisY);
-            });
         });
 
-        // Relier les cercles proches et gérer la visibilité des lignes
+        // Relier les carres à la souris
         function dessinerLignes() {
-            for (let i = 0; i < cercles.length; i++) {
-                for (let j = i + 1; j < cercles.length; j++) {
-                    const cercle1 = cercles[i];
-                    const cercle2 = cercles[j];
+            for (let i = 0; i < carres.length; i++) {
+                const carre1 = carres[i];
+                const dx = sourisX - carre1.x;
+                const dy = sourisY - carre1.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
 
-                    const dx = cercle2.x - cercle1.x;
-                    const dy = cercle2.y - cercle1.y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-
-                    // Calculer la distance entre la souris et les deux cercles pour la visibilité de la ligne
-                    const distCercle1 = Math.sqrt((sourisX - cercle1.x) ** 2 + (sourisY - cercle1.y) ** 2);
-                    const distCercle2 = Math.sqrt((sourisX - cercle2.x) ** 2 + (sourisY - cercle2.y) ** 2);
-
-                    // Si la distance entre les cercles est inférieure au seuil, et qu'ils sont proches de la souris
-                    if (distance < seuilDistance && distCercle1 <= rayonDisparition && distCercle2 <= rayonDisparition) {
-                        ctx.beginPath();
-                        ctx.moveTo(cercle1.x, cercle1.y);
-                        ctx.lineTo(cercle2.x, cercle2.y);
-                        ctx.strokeStyle = 'rgba(62, 207, 127, 0.5)';
-                        ctx.lineWidth = 1;
-                        ctx.stroke();
-                    }
+                // Si la distance entre le carre et la souris est inférieure au seuil
+                if (distance < seuilDistance) {
+                    ctx.beginPath();
+                    ctx.moveTo(carre1.x + carre1.size / 2, carre1.y + carre1.size / 2);
+                    ctx.lineTo(sourisX, sourisY);
+                    ctx.strokeStyle = 'rgba(62, 207, 127, 0.5)'; // Couleur des lignes
+                    ctx.lineWidth = 1;
+                    ctx.stroke();
                 }
+
+                // Mettre à jour l'opacité des carres
+                carre1.miseAjourOpacite(distance);
             }
         }
 
         // Animation
         function animer() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            cercles.forEach(cercle => {
-                cercle.mettreAJour();
-                cercle.dessiner();
+            ctx.clearRect(0, 0, canvas.width, canvas.height); // Effacer le canvas à chaque frame
+            carres.forEach(carre => {
+                carre.mettreAJour(); // Mettre à jour la position du carre
+                carre.dessiner(); // Dessiner le carre
             });
-            dessinerLignes();
-            requestAnimationFrame(animer);
+            dessinerLignes(); // Dessiner les lignes reliant les carres à la souris
+            requestAnimationFrame(animer); // Demander une nouvelle frame
         }
 
         animer();

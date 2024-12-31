@@ -292,15 +292,14 @@ header {
     border: none;
 }
 
+/* Styles généraux pour la section */
 .service {
     text-align: center;
-    justify-content: center;
-    margin-top: -10px;
-    background: linear-gradient(rgb(255, 255, 255),white);
+    margin-top: 20px;
+    background: linear-gradient(rgb(255, 255, 255), white);
     padding: 30px;
-
 }
- 
+
 .service a {
     color: rgba(247, 163, 53, 0.8);
     text-decoration: none;
@@ -310,33 +309,70 @@ header {
     text-decoration: underline;
 }
 
-.table-service {
+/* Container des services */
+.service-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Permet aux éléments de passer à la ligne sur les petits écrans */
+    gap: 20px;
     padding: 10px;
-    z-index: 100;
-    width:100%;
 }
 
-.table-service th {
-    padding: 10px;
-    width: 25%;
+/* Style de chaque élément de service */
+.service-item {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 23%; /* Par défaut, chaque élément prend 23% de la largeur */
+    box-sizing: border-box;
 }
 
-.table-service th a {
-    color: black;
+/* Image et texte des services */
+.service-item img {
+    border-radius: 50%;
+    margin-bottom: 10px;
 }
 
-.table-service th:hover {
-    background-color: rgb(255, 152, 0, 0.8);
+.service-item h2 {
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.service-item p {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.service-item a {
+    color: rgba(247, 163, 53, 0.8);
+}
+
+.service-item a:hover {
+    text-decoration: underline;
+}
+
+/* Survol des éléments de service */
+.service-item:hover {
+    background-color: rgba(255, 152, 0, 0.8);
     color: white;
-    border-radius: 10%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-th p {
-    display: inline-block;
-    width: 100%;
-    font-size: small;
+/* Media Queries pour rendre le contenu responsive */
+
+/* Pour les écrans plus petits que 1024px, on ajuste les tailles des services */
+@media (max-width: 1024px) {
+    .service-item {
+        width: 45%; /* Deux éléments par ligne */
+    }
+}
+
+/* Pour les écrans plus petits que 768px, on passe à une seule colonne */
+@media (max-width: 768px) {
+    .service-item {
+        width: 100%; /* Un seul service par ligne */
+    }
 }
 
 footer{
@@ -348,13 +384,14 @@ footer{
 
 .containt {
     position: relative;
-    width: 100%;
-    height: 55vh; /* Ajuster à la hauteur du viewport */
+    width: 100%; /* Utilise toute la largeur de l'écran */
+    height: 100vh; /* Hauteur égale à la hauteur du viewport */
     overflow: hidden;
 }
 
+/* Chaque slide (image) */
 .slide-p {
-    width: 100%;
+    width: 100%;   
     height: 100%;
     position: absolute;
     opacity: 0;
@@ -364,40 +401,73 @@ footer{
     align-items: center;
 }
 
+/* Images dans les slides */
 .slide-p img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Garder le ratio d'aspect de l'image */
+    object-fit: cover; /* Conserve le ratio d'aspect de l'image */
 }
 
+/* Styles des boutons de navigation (précédent et suivant) */
 .prev-x, .next-x {
-    position: absolute;
-    top: 50%; /* Centrer verticalement */
-    transform: translateY(-50%); /* Pour compenser la hauteur du bouton */
-    background-color: rgba(0, 0, 0, 0);
+    position:relative; /* Centrer verticalement */
+    transform: translateY(-50%); /* Ajuster le bouton au centre */
+    background-color: rgba(0, 0, 0, 0.5);
     color: rgba(28, 40, 199, 0.829);
     border: none;
-    font-size: 70px;
+    font-size: 3rem; /* Taille des icônes plus flexible */
     cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+    z-index: 2; /* Placer les boutons au-dessus des images */
 }
 
+/* Position du bouton précédent */
 .prev-x {
     left: 10px;
 }
 
+/* Changement de style lors du survol du bouton précédent */
 .prev-x:hover {
     color: rgba(0, 0, 0, 0.9);
-    font-size: 50px;
+    font-size: 3.5rem; /* Augmenter la taille au survol */
 }
 
-.next-x:hover {
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 50px;
-}
-
+/* Position du bouton suivant */
 .next-x {
     right: 10px;
 }
+
+/* Changement de style lors du survol du bouton suivant */
+.next-x:hover {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 3.5rem; /* Augmenter la taille au survol */
+}
+
+/* Responsive : ajuster la taille des boutons sur les petits écrans */
+@media (max-width: 768px) {
+    .prev-x, .next-x {
+        font-size: 2.5rem; /* Réduire la taille des boutons */
+    }
+}
+
+/* Responsive : ajuster la taille de l'image dans les slides */
+@media (max-width: 768px) {
+    .slide-p img {
+        object-fit: contain; /* Ajuster l'image pour qu'elle ne dépasse pas */
+    }
+}
+
+/* Responsive : ajuster la hauteur du conteneur pour les petits écrans */
+@media (max-width: 480px) {
+    .containt {
+        height: 70vh; /* Réduire la hauteur sur les petits écrans */
+    }
+    .prev-x, .next-x {
+        font-size: 2rem; /* Réduire encore la taille des boutons */
+    }
+}
+
 
 .transition {
     width: 100%;
@@ -422,7 +492,6 @@ footer{
 /* Pagination */
 .pagination-x {
     position: absolute;
-    bottom: 10px; /* Collé en bas du conteneur */
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -445,87 +514,102 @@ footer{
     opacity: 1;
 }
 
-/* Media Queries pour Responsivité */
-@media (max-width: 768px) {
-    .containt {
-        height: vh; /* Augmenter la hauteur pour les écrans plus petits */
-    }
 
-    .prev-x, .next-x {
-        font-size: 50px; /* Réduire la taille des boutons */
-    }
-
-    .pagination-x {
-        bottom: 5%; /* Ajuster la position de la pagination */
-    }
-
-    .pagination-x span {
-        height: 8px;
-        width: 8px;
-        margin: 0 3px; /* Réduire la taille des points de pagination */
-    }
-
-    .far {
-        margin-left: 20%;
-        margin-right: 20%;
-        font-size: medium; /* Ajuster la taille du bouton */
-    }
+/* Conteneur principal */
+.pp {
+    padding: 20px;
+    background-color: #f5f5f5;
 }
 
-@media (max-width: 480px) {
-    .containt {
-        height: 80vh; /* Augmenter la hauteur pour les appareils mobiles */
-    }
-
-    .prev-x, .next-x {
-        font-size: 40px; /* Réduire encore plus les boutons */
-    }
-
-    .pagination-x {
-        bottom: 3%; /* Positionner la pagination encore plus bas sur mobile */
-    }
-
-    .pagination-x span {
-        height: 6px;
-        width: 6px; /* Réduire les points de pagination */
-    }
-
-    .far {
-        margin-left: 15%;
-        margin-right: 15%;
-        font-size: small; /* Réduire la taille du bouton */
-    }
-}
-
-.t-shirt{
-    margin: 50px;
-}
-
-.t-shirt tr{
+/* Structure de chaque élément de la collection */
+.collection-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 30px 0;
     width: 100%;
+    box-sizing: border-box;
+    flex-wrap: wrap; /* Permet aux éléments de passer à la ligne sur des écrans petits */
 }
 
-.t-shirt tr .t-shirt-first{
-    width: 60%;
+/* Inverser l'ordre de la première colonne et de l'image pour les petits écrans */
+.collection-item.reverse {
+    flex-direction: row-reverse;
 }
 
-.t-shirt tr .t-shirt-second{
-    width: 40%;
+/* Section textuelle de chaque collection */
+.collection-text {
+    flex: 1;
+    padding: 20px;
+    text-align: left;
 }
 
-.t-shirt-x{
-    margin: 50px;
+/* Titre des collections */
+.collection-text h1 {
+    font-size: 35px;
+    margin-bottom: 15px;
 }
 
-.t-shirt-x tr{
-width: 100%;
-
+/* Texte des collections */
+.collection-text p {
+    font-size: 14px;
+    color: #333;
 }
 
-.t-shirt-x tr .t-shirt-first{
-    width: 40%;
+/* Lien pour "Voir plus" */
+.collection-text a {
+    color: #f7a353;
+    text-decoration: none;
 }
 
-.t-shirt-x tr .t-shirt-second{
-    width: 60%;
+/* Style de l'image */
+.collection-image {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
 }
+
+/* Les images de la collection */
+.collection-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Media Queries pour rendre le contenu responsive */
+
+/* Pour les écrans plus petits que 1024px */
+@media (max-width: 1024px) {
+    .collection-item {
+        flex-direction: column; /* Les éléments passent en colonne */
+        text-align: center;
+    }
+
+    .collection-item.reverse {
+        flex-direction: column-reverse; /* Inverser l'ordre pour les petits écrans */
+    }
+
+    .collection-text h1 {
+        font-size: 30px; /* Réduire la taille du titre */
+    }
+
+    .collection-text p {
+        font-size: 12px; /* Réduire la taille du texte */
+    }
+}
+
+/* Pour les écrans plus petits que 768px */
+@media (max-width: 768px) {
+    .collection-item {
+        padding: 10px; /* Réduire les espacements sur les petits écrans */
+    }
+
+    .collection-text h1 {
+        font-size: 25px; /* Réduire davantage la taille du titre */
+    }
+
+    .collection-text p {
+        font-size: 11px; /* Réduire davantage la taille du texte */
+    }
+}
+

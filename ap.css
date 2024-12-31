@@ -79,6 +79,12 @@ header {
         text-align: center;
     }
 }
+
+@media (max-width: 1400px) {
+    .important{
+        display: none;
+    }
+}
 .presentation{
     margin:0 50px;
     background-color: rgb(13,78,156);
@@ -200,6 +206,7 @@ header {
     border-collapse:collapse;
     display:flex;
     justify-content:center;
+    z-index: 100;
     
 }
 .equipe table tr{
@@ -216,7 +223,7 @@ header {
     letter-spacing: normal;
 }
 .equipe table tr td img{
-    width:100%;
+    width:100px;
     margin:0;
     border-bottom: 50px;
 }
@@ -244,4 +251,17 @@ header {
      100%{
         transform: scale(1);
      }
+}
+#canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* L'animation sera derrière tous les autres éléments */
+}
+
+.main-content, .vision-p, .equipe {
+    position: relative;
+    z-index: 1; /* Assurer que ces éléments sont au-dessus de l'animation */
 }
