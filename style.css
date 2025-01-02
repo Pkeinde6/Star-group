@@ -345,7 +345,7 @@ header {
 }
 
 .service-item a {
-    color: rgba(247, 163, 53, 0.8);
+    color: rgb(0, 0, 0);
 }
 
 .service-item a:hover {
@@ -410,9 +410,10 @@ footer{
 
 /* Styles des boutons de navigation (précédent et suivant) */
 .prev-x, .next-x {
-    position:relative; /* Centrer verticalement */
+    display: inline-flex; /* Centrer verticalement */
     transform: translateY(-50%); /* Ajuster le bouton au centre */
-    background-color: rgba(0, 0, 0, 0.5);
+    margin-top: -30%;
+    background-color: rgba(0, 0, 0, 0);
     color: rgba(28, 40, 199, 0.829);
     border: none;
     font-size: 3rem; /* Taille des icônes plus flexible */
@@ -424,7 +425,8 @@ footer{
 
 /* Position du bouton précédent */
 .prev-x {
-    left: 10px;
+    margin-left: 1%;
+    float: left;
 }
 
 /* Changement de style lors du survol du bouton précédent */
@@ -435,7 +437,8 @@ footer{
 
 /* Position du bouton suivant */
 .next-x {
-    right: 10px;
+    margin-right: 1%;
+    float: right;
 }
 
 /* Changement de style lors du survol du bouton suivant */

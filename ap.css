@@ -85,24 +85,52 @@ header {
         display: none;
     }
 }
-.presentation{
-    margin:0 50px;
-    background-color: rgb(13,78,156);
-    color: white;
-    border-top-left-radius:  20px;
-    border-top-right-radius:  20px;
-}
-
-.presentation tr{
+.main-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 30px 0;
     width: 100%;
+    box-sizing: border-box;
+    flex-wrap: wrap; /* Permet aux éléments de passer à la ligne sur des écrans petits */
+}
+.main-second{
+    flex: 1;
+    padding: 20px;
+    text-align: left;
+    /* Section textuelle de chaque main */
+.main-second {
+    flex: 1;
+    padding: 20px;
+    text-align: left;
 }
 
-.presentation tr .presentation-first{
-    width: 60%;
+/* Titre des mains */
+.main-second h1 {
+    font-size: 35px;
 }
 
-.presentation tr .presentation-second{
-    width: 40%;
+/* Texte des mains */
+.main-second p {
+    font-size: 14px;
+    color: #333;
+}
+
+/* Lien pour "Voir plus" */
+.main-second a {
+    color: #f7a353;
+    text-decoration: none;
+}
+}
+.main-first{
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+}
+.main-first img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
 }
 
 .vision-p{

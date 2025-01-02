@@ -155,13 +155,14 @@
     </div>
 
     <div class="collection-item reverse">
-        <div class="collection-image">
-            <img src="Nouveau-dossier\Carte visite star group mockup.png" width="100%" alt="">
-        </div>
-        <div class="collection-text">
+    <div class="collection-text">
             <h1>Notre collection de t-shirt</h1>
             <p>Notre entreprise propose des services professionnels de graphisme et de design graphique pour aider à la création d'une identité visuelle unique et impactante... <a href="">Voir plus</a></p>
         </div>
+        <div class="collection-image">
+            <img src="Nouveau-dossier\Carte visite star group mockup.png" width="100%" alt="">
+        </div>
+       
     </div>
 
     <div class="collection-item">
@@ -175,12 +176,12 @@
     </div>
 
     <div class="collection-item reverse">
-        <div class="collection-image">
-            <img src="Nouveau-dossier\Calendrier.png" width="100%" alt="">
-        </div>
         <div class="collection-text">
             <h1>Notre collection de t-shirt</h1>
             <p>Notre entreprise propose des services professionnels de graphisme et de design graphique pour aider à la création d'une identité visuelle unique et impactante... <a href="">Voir plus</a></p>
+        </div>
+        <div class="collection-image">
+            <img src="Nouveau-dossier\Calendrier.png" width="100%" alt="">
         </div>
     </div>
 

@@ -21,78 +21,71 @@
         </nav>
     </header> 
     <section class="main-content">
-        <table class="presentation" >
-            <tr>
-                <th class="presentation-first">
+            <div class="main-item">
+                <div class="main-first">
                     <img src="Nouveau-dossier\Star b@4x.png" width="80%" alt="">
-                </th>
-                <th class="presentation-second">
-                    <h1 style="font-size: 40px;">Qui somme nous?</h1>
+                </div >
+                <div  class="main-second">
+                    <h1>Qui somme nous?</h1>
                     <p> Star Group, créé en 2017, est spécialisée dans la distribution de solutions innovantes dans le domaine du numérique. Basée à Dakar, l'entreprise offre des produits et services à valeur ajoutée. <br><br> En 2022, Star Group démarre ses activités et devient peu à peu un partenaire sûr grâce à une équipe expérimentée formée de jeunes très dynamiques avec un savoir-faire inégalé toujours prête à relever les défis les plus énormes. <br> <br>Notre Challenge au quotidien reste l'offre de service sur mesure et de produits de qualités pour l'épanouissement total de nos chers clients et partenaires.</p>
-                </th>
-            </tr>
-            <img src="Nouveau-dossier\Sans_titre-1__1_-removebg-preview.png" width="700px"  class="important" height="auto" alt="">
-        </table>
-      
+                </div >
+            </div>
+            <!--<img src="Nouveau-dossier\Sans_titre-1__1_-removebg-preview.png" width="700px"  class="important" height="auto" alt="">  -->
     </section>
-    <div >
-        
-    </div>
+
     <section class="vision-p">
-    <h1 style="font-size: 50px;color:rgb(13,78,156);text-align:center;">Nos Valeurs</h1>
-        <table class="vision">        
-            <tr>
-                    <td class="vision-x-first" >
+    <h1 style="font-size: 50px;color:rgb(13,78,156);text-align:center;">Nos Valeurs</h1>     
+            <div>
+                    <div class="vision-x-first" >
                         <h1 style="font-size: 40px;color:rgb(13,78,156);margin-left:30%">Vision</h1>
                         <p  style="text-align:start;display:inline-block;width:500px;font-weight:bold;color:rgb(13,78,156)"> Star Group projette de devenir le partenaire incontournable dans le numérique que cela soit dans la sous-région ou en Afrique. <br> <br>Être le numéro un africain pour flotter sur le toit mondial du hub numérique avec des solutions et produits adaptées.</p>
-                    </td>                
-                    <td style="padding:0 0;" >
+                    </div>                
+                    <div style="padding:0 0;" >
                         <img src="https://images.pexels.com/photos/699459/pexels-photo-699459.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="xy" alt="">
-                    </td>
+                    </div>
                     
-            </tr>
-            <tr>
-                    <td style="padding:0 0;" >
+            </div>
+            <div>
+                    <div style="padding:0 0;" >
                         <img src="https://images.pexels.com/photos/699459/pexels-photo-699459.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="xy"alt="">
-                    </td>
-                    <td class="vision-x-second">
+                    </div>
+                    <div class="vision-x-second">
                         <h1 style="font-size: 40px;color:rgb(13,78,156);margin-left:30%">Mission</h1>
                         <p  style="text-align:start;display:inline-block;font-weight:bold;width:500px;color:rgb(13,78,156)"> Toute l'équipe est dévouée à accomplir la mission primordiale que s'est fixée Star Group, le sourire du client. <br> <br>Nous voulons retisser le lien entre le client et son fournisseur et par la même occasion rebâtir le système digital avec notre magie.</p>
-                    </td>
+                    </div>
                 
-            </tr>
-        </table>
+            </div>
     </section>
     <section class="equipe">
         <h1 style="font-size: 50px;color:rgb(13,78,156);text-align:center;padding:30px;">Our Team</h1>
         <table>
-            <tr>
-                <td style="">
+            <div>
+                <di style="">
                     <img src="IMG_5043.jpg" alt="">
                     <h2>Pape Cheikh Keinde </></h2>
 
                     <h4><  Web Developper  / ></h4>
                     
-                </td>
-                <td>
+                </di>
+                <di>
                 <img src="IMG_5043.jpg" alt="">
                     <h2>Pape Cheikh Keinde</h2>
                     <h4>Web Developper</h4>
                     
-                </td>
-            </tr>
-            <tr>
-                <td>
+                </di>
+            </div>
+            <div>
+                <di>
                     <img src="IMG_5043.jpg" alt="">
                     <h2>Pape Cheikh Keinde</h2>
                     <h4>Web Developper</h4>
-                </td>
-                <td>
+                </di>
+                <di>
                     <img src="IMG_5043.jpg" alt="">
                     <h2>Pape Cheikh Keinde</h2>
                     <h4>Web Developper</h4>
-                </td>
-            </tr>
+                </di>
+            </div>
         </table>
        
 
