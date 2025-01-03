@@ -79,95 +79,65 @@ header {
         text-align: center;
     }
 }
-
-@media (max-width: 1400px) {
-    .important{
-        display: none;
-    }
+.presentation{
+    margin:0 50px;
+    background-color: rgb(13,78,156);
+    color: white;
+    border-top-left-radius:  20px;
+    border-top-right-radius:  20px;
+    box-shadow: 0 4px 10px rgb(0 0 0 / 64%);
 }
-.main-item{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 30px 0;
+
+.presentation tr{
     width: 100%;
-    box-sizing: border-box;
-    flex-wrap: wrap; /* Permet aux éléments de passer à la ligne sur des écrans petits */
-}
-.main-second{
-    flex: 1;
-    padding: 20px;
-    text-align: left;
-    /* Section textuelle de chaque main */
-.main-second {
-    flex: 1;
-    padding: 20px;
-    text-align: left;
 }
 
-/* Titre des mains */
-.main-second h1 {
-    font-size: 35px;
+.presentation tr .presentation-first{
+    width: 60%;
 }
 
-/* Texte des mains */
-.main-second p {
-    font-size: 14px;
-    color: #333;
-}
-
-/* Lien pour "Voir plus" */
-.main-second a {
-    color: #f7a353;
-    text-decoration: none;
-}
-}
-.main-first{
-    flex: 1;
-    padding: 20px;
-    text-align: center;
-}
-.main-first img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
+.presentation tr .presentation-second{
+    width: 40%;
 }
 
 .vision-p{
     padding-top: 200px;
-    background-color: rgb(255, 165, 0,.5);
+    background-color: #F6A01A;
     margin: 0 50px;
+        box-shadow: 0 4px 10px rgb(0 0 0 / 64%);
 }
 .vision{
     border-collapse:collapse;
     display:flex;
     justify-content:center;
-    
+    box-shadow: black;
 }
 
 .vision tr{
     width: 100%;
     border: solid 1px rgba(0, 0, 0, 0.158);
+    background-color: rgb(255 255 255);
+    box-shadow: 0 4px 10px rgb(0 0 0 / 46%);
 }
 
 .vision tr .vision-x-second{
     width: 50%;
     padding: 20px 50px;
-    background-color: white;
+    background-color: rgb(13,78,156,.95);
 }
 
 .vision tr .vision-x-first{
     width: 50%;
     padding: 20px 50px;
-    background-color: white;
+    background-color: rgb(13,78,156,.95);
 }
 .vision .vision-x-first h1{
-    border-bottom: solid 1px rgb(13,78,156);
+    border-bottom: solid 1px rgb(255 255 255);
     cursor: pointer;
     animation:underline 6s infinite ease-in-out ;
 }
 .vision .vision-x-second h1{
-    border-bottom: solid 1px rgb(13,78,156);
+    border-bottom: solid 1px rgb(255 255 255);
     cursor: pointer;
     animation:underline 6s infinite ease-in-out;
 }
@@ -227,39 +197,101 @@ header {
     height: 50em !important;
 }
 .equipe{
-    padding: 30px;
+    padding: 100px;
    
 }
-.equipe table{
-    border-collapse:collapse;
-    display:flex;
-    justify-content:center;
-    z-index: 100;
-    
-}
-.equipe table tr{
+/* Structure de chaque élément de la p */
+.p-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 30px 0;
     width: 100%;
-    border: solid 1px rgba(0, 0, 0, 0.158);
-    margin:20px;
+    box-sizing: border-box;
+    flex-wrap: wrap; /* Permet aux éléments de passer à la ligne sur des écrans petits */
 }
-.equipe table tr td{
-    border: solid 1px rgba(0, 0, 0, 0.158);
-    background-color: white;
+
+/* Inverser l'ordre de la première colonne et de l'image pour les petits écrans */
+.p-item.reverse {
+    flex-direction: row-reverse;
 }
-.equipe table tr td h4{
-    font-weight: 900;
-    letter-spacing: normal;
+
+
+/* Section textuelle de chaque p */
+.p-text {
+    flex: 1;
+    padding: 20px;
+    text-align: left;
 }
-.equipe table tr td img{
-    width:100px;
-    margin:0;
-    border-bottom: 50px;
+
+/* Titre des ps */
+.p-text h1 {
+    font-size: 35px;
+    margin-bottom: 15px;
+    color:rgb(13,78,156);
 }
-.equipe table tr td p{
-    text-align:start;
-    display:inline-block;
-    width:450px;
-    font-size:14px;
+
+/* Texte des ps */
+.p-text .details{
+    display: inline-block;
+    width: 500px;
+}
+.p-text p {
+    font-size: 14px;
+    color:rgb(13,78,156);
+
+}
+
+/* Style de l'image */
+.p-image {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Les images de la p */
+.p-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgb(0 0 0 / 64%);
+}
+
+/* Media Queries pour rendre le contenu responsive */
+
+/* Pour les écrans plus petits que 1024px */
+@media (max-width: 1024px) {
+    .p-item {
+        flex-direction: column; /* Les éléments passent en colonne */
+        text-align: center;
+    }
+
+    .p-item.reverse {
+        flex-direction: column-reverse; /* Inverser l'ordre pour les petits écrans */
+    }
+
+    .p-text h1 {
+        font-size: 30px; /* Réduire la taille du titre */
+    }
+
+    .p-text p {
+        font-size: 12px; /* Réduire la taille du texte */
+    }
+}
+
+/* Pour les écrans plus petits que 768px */
+@media (max-width: 768px) {
+    .p-item {
+        padding: 10px; /* Réduire les espacements sur les petits écrans */
+    }
+
+    .p-text h1 {
+        font-size: 25px; /* Réduire davantage la taille du titre */
+    }
+
+    .p-text p {
+        font-size: 11px; /* Réduire davantage la taille du texte */
+    }
 }
 .important {
     display: flex;
@@ -279,17 +311,4 @@ header {
      100%{
         transform: scale(1);
      }
-}
-#canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1; /* L'animation sera derrière tous les autres éléments */
-}
-
-.main-content, .vision-p, .equipe {
-    position: relative;
-    z-index: 1; /* Assurer que ces éléments sont au-dessus de l'animation */
 }

@@ -10,17 +10,18 @@
 </head>
 <body>
     <div class="reseau">
-        <table style="border-collapse: collapse; border-radius: 10px;">
-            <tr>
-                <td><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRh3aPIMNnt9nGHNX-goFe874pKj8f43CoYpg&s" width="20px" alt=""></td>
-            </tr>
-            <tr>
-                <td><img src="https://www.logo.wine/a/logo/Snapchat/Snapchat-Ghost-Outlined-Logo.wine.svg" width="20px" alt=""></td>
-            </tr>
-            <tr>
-                <td><img src="https://i.pinimg.com/736x/1b/60/f9/1b60f9d42fd84e31b304d5e7779cccfd.jpg" width="20px" alt=""></td>
-            </tr>
-        </table>
+            <div >
+                <a href="https://www.instagram.com/"><img src="Nouveau-dossier\fqce@3x.png" width="20px"></a>
+            </div>
+            <div>
+                <a href="https://www.snapchat.com/"><img src="Nouveau-dossier\linkedin@3x.png" width="20px"alt=""></a>
+            </div>
+            <div>
+                <a href="https://www.whatsapp.com/"><img src="Nouveau-dossier\wah=t@3x.png" width="20px" alt=""></a>
+            </div>
+            <div>
+                <a href="https://www.youtube.com/"><img src="Nouveau-dossier\youtube@3x.png" width="20px" alt=""></a>
+            </div>
     </div>
     <header>
         <nav class="nav-bar">
