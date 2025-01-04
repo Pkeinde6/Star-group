@@ -17,11 +17,9 @@ body {
         top: 60%;
         left: 2%;
         position: fixed;
-        border: solid 1px rgb(0, 0, 0);
         z-index: 100;
-        border-radius: 30px;
         cursor: pointer;
-        animation: secousse 1s linear infinite, secousse-pause 11s steps(1, end) infinite;
+        animation: secousse 1s linear 3s ;
     }
     
     /* Animation de secousse */
