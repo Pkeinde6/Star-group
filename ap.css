@@ -309,7 +309,8 @@ header {
     border-radius: 10px;
     box-shadow: 0 4px 10px rgb(0 0 0 / 64%);
 }
-
+#commentaire .p-text p{
+}
 /* Media Queries pour rendre le contenu responsive */
 
 /* Pour les écrans plus petits que 1024px */
@@ -374,7 +375,6 @@ header {
      }
 }
 footer{
-    padding: 30px;
     background-color: rgb(216, 216, 216);
     position: static;
 }
@@ -386,10 +386,12 @@ footer div{
     width: 100%;
     box-sizing: border-box;
     flex-wrap: wrap;
+    flex: 1;
+    text-align: left;
 }
-footer div{
-        flex: 1;
-        text-align: left;
+
+footer div div{
+    margin: none;
 }
 footer .first{
     padding-right: 300px;

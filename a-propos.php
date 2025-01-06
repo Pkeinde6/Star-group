@@ -68,27 +68,27 @@
             <div class="p-text">
                 <h1>Maodo NDIAYE</h1>
                 <p>Chief Executif officer ( C.E.O )</p>
-                <p class="details">Paragraphe. Cliquez ici pour ajouter votre propre texte. Cliquez sur "Modifier Texte" ou double-cliquez ici pour ajouter votre contenu et personnaliser les polices. Relatez ici votre parcours et présentez votre activité à vos visiteurs. </p>
+                <p class="details"> << Faire de notre mieux pour vous proposer les meilleurs solutions possibles dans le domaine du software ou du hardware... >></p>
             </div>
             <div class="p-image">
-                <img src="IMG_5043.jpg" width="100%" alt="">
+                <img src="Nouveau-dossier\maodo.jpg" width="100%" alt="">
             </div>
         </div>
         <div class="p-item reverse">
             <div class="p-text">
                 <h1>Cheikh BADIANE</h1>
                 <p>Chief Operating Officer ( C.O.O )</p>
-                <p class="details">Paragraphe. Cliquez ici pour ajouter votre propre texte. Cliquez sur "Modifier Texte" ou double-cliquez ici pour ajouter votre contenu et personnaliser les polices. Relatez ici votre parcours et présentez votre activité à vos visiteurs. </p>
+                <p class="details"><< Mettre à votre disposition la meilleure technologie du graphisme et de l'impression numérique... >></p>
             </div>
             <div class="p-image">
-                <img src="IMG_5043.jpg" width="100%" alt="">
+                <img src="Nouveau-dossier\badiane.jpg" width="100%" alt="">
             </div>
         </div>
         <div class="p-item">
             <div class="p-text">
                 <h1>Pape Cheikh Keinde</h1>
                 <p>< Web Developper / ></p>
-                <p class="details">Paragraphe. Cliquez ici pour ajouter votre propre texte. Cliquez sur "Modifier Texte" ou double-cliquez ici pour ajouter votre contenu et personnaliser les polices. Relatez ici votre parcours et présentez votre activité à vos visiteurs. </p>
+                <p class="details">Nous vous fournissons le meilleur  produit web/mobile qui fera sentir unique selon vos besoins...</p>
             </div>
             <div class="p-image">
                 <img src="IMG_5043.jpg" width="100%" alt="">
@@ -98,17 +98,56 @@
             <div class="p-text">
                 <h1>Pape Babacar Mbaye</h1>
                 <p>network technician <img src="https://st4.depositphotos.com/3538103/40645/v/450/depositphotos_406451580-stock-illustration-wi-fi-icon-wireless-icon.jpg" width="30px" alt=""></p>
-                <p class="details">Paragraphe. Cliquez ici pour ajouter votre propre texte. Cliquez sur "Modifier Texte" ou double-cliquez ici pour ajouter votre contenu et personnaliser les polices. Relatez ici votre parcours et présentez votre activité à vos visiteurs. </p>
+                <p class="details">Une bonne communication est impossible sans un bon flux réseau, c'est pourqoi nous l'adaptons à votre ère...</p>
             </div>
             <div class="p-image">
                 <img src="Nouveau-dossier\pape_mboup.png" width="100%" alt="">
             </div>
         </div>
     </section>
+    <section id="commentaire">
+    <div class="p-item">
+
+    <div class="p-image">   
+    <?php
+        if(empty($_POST["nom"]) == true){
+            echo'<img src="https://static.vecteezy.com/ti/vecteur-libre/p2/566937-icone-de-personne-gratuit-vectoriel.jpg" width="40%" style="display:none;" alt="">';
+        }
+            if(isset($_POST["nom"]) == true){
+                $commentaire=[];
+                $nom = htmlspecialchars($_POST["nom"]);
+                $prenom = htmlspecialchars($_POST["prenom"]);
+                $email = htmlspecialchars($_POST["email"]);
+                $story= htmlspecialchars($_POST["story"]);
+               
+                echo'<img src="https://static.vecteezy.com/ti/vecteur-libre/p2/566937-icone-de-personne-gratuit-vectoriel.jpg" width="40%" alt="">';
+               ?>
+            </div>
+    <div class="p-text">
+        <h1><?= 
+                $email;  
+            ?>
+        </h1>
+        <h3>
+            <?= 
+                $prenom." ".$nom;
+             
+            ?>
+        </h3>
+        <p>
+            <?= 
+                $story;
+            }
+            ?>
+        </p>
+        </div>
+        </div>
+    </section>
     <script src="script.js"></script>
     
     <footer>
-        <div>
+        <hr>
+        <div> 
         <div class="first">
             <ul>
             <li><h1>Nous contacter</h1></li>
@@ -120,19 +159,21 @@
         
     
         <div class="second">
+        <form action="" method="post">
             <ul>
                 <li><label for=""><h1>Laissez un commentaire</h1></label></li>
                 <li class="name">
-                    <input type="text" id="name" placeholder="Nom">
-                    <input type="text" id="prenom" placeholder="Prenom">
+                    <input type="text" id="nom" name="nom" placeholder="Nom">
+                    <input type="text" id="prenom" name="prenom" placeholder="Prenom">
                 </li>
-                <li> Enter your email <br><input type="text" id="email" placeholder="example@xyz.com"></li>
+                <li> Enter your email <br><input type="text" id="email"name="email" placeholder="example@xyz.com"></li>
                 <label for="story">Entre le commentaire</label>
 
                 <textarea id="story" name="story" rows="10" cols="40" >
                 </textarea>
-                <li><input type="button" value="envoyer"></li>
+                <li><input type="submit" value="SENd"></li>
             </ul>
+            </form>
         </div>
         <div class="third">
             <ul>

@@ -90,22 +90,22 @@
             <div class="service-item">
                 <img src="https://thumbs.dreamstime.com/b/stylo-plume-avec-l-illustration-d-%C3%A9l%C3%A9ment-de-logo-ic%C3%B4ne-du-vecteur-encre-isol%C3%A9e-sur-le-fond-noir-feuille-isol%C3%A9-classique-185210448.jpg" width="100" style="border-radius: 50%;" alt="Icône stylisé de plume">
                 <h2>Design Graphique</h2>
-                <p>Notre entreprise propose des services professionnels de graphisme et de design graphique pour aider à la création d'une identité visuelle unique et impactante... <a href="">Voir plus</a></p>
+                <p>Une bonne communication passe par des insignes explicites  répondany aux exigences des codes couleurs. Nous extérioriserons vos goûts à travers une large gamme de concepte  branding 2D et 3D avec une impression numérique de qualité... <a href="">Voir plus</a></p>
             </div>
             <div class="service-item">
                 <img src="https://cbx-prod.b-cdn.net/COLOURBOX18689421.jpg?width=800&height=800&quality=70" width="100" style="border-radius: 50%;" alt="Icône représentant un écran de développement web">
                 <h2>Développement web / mobile</h2>
-                <p>Notre entreprise propose des services de développement web sur mesure pour créer des sites internet modernes, performants et adaptés à vos besoins...<a href="">Voir plus</a></p>
+                <p>Nous matérialiserons vos idées avec une conception de software adaptée à vos besoins. Des sites Web sur mesure, d'applications mobiles Android / ios et web, sites e-commerce, vitrine et learning. Sans oublier des solutions synchroniser avec l'IA...<a href="">Voir plus</a></p>
             </div>
             <div class="service-item">
                 <img src="https://cdn.icon-icons.com/icons2/1233/PNG/512/1492718748-share_83604.png" width="100" style="border-radius: 50%;" alt="Icône marketing digital">
                 <h2>Marketing Digital</h2>
-                <p>Notre entreprise propose des services de référencement (SEO) pour améliorer la visibilité de votre site web sur les moteurs de recherche...<a href="">Voir plus</a></p>
+                <p>Dans un monde dominé par les médis sociaux, le digital marketing reste un allié incontournable. Que vous voyez professionnels ou structure PME, vous avez besoin des techniques digitaux pour bien faire valoir vos produits et services...<a href="">Voir plus</a></p>
             </div>
             <div class="service-item">
                 <img src="https://cdn.icon-icons.com/icons2/1233/PNG/512/1492718748-share_83604.png" width="100" style="border-radius: 50%;" alt="Icône système et réseau">
                 <h2>Système et Réseau</h2>
-                <p>Notre entreprise propose des services d'administration des systèmes et réseaux pour assurer une gestion optimale de vos infrastructures informatiques...<a href="">Voir plus</a></p>
+                <p>Une équipe expérimentée va prendre en charge votre structures informatique avec un dépannage préventif et curatif. Nous offrons également une installation de système réseau adaptée à votre parc IT ainsi que toute installation de vidéo surveillance et de support Wifi...<a href="">Voir plus</a></p>
             </div>
         </div>
     </section>
@@ -196,7 +196,25 @@
         </div>
     </div>
 </section>
+<section class="secteurs">
+    <h1>Nos secteurs d'interventions</h1>
+    <div class="h4-container">
+        <h4>Education</h4>
+        <h4>Transport</h4>
+        <h4>Restauration</h4>
+        <h4>Gaming</h4>
+        <h4>Santé</h4>
+        <h4>Commerce</h4>
+        <h4>Voyage</h4>
+    </div>
+    <div class="container-secteurs">
+        <img src="Nouveau-dossier/logon.jpg" width="100px" height="auto">
+    </div>
+</section>
 
+
+
+<section></section>
 
     <footer>STAR GROUP | Au plaisir d'innover ! Dakar, Sénégal</footer>
 
