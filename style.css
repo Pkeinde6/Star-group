@@ -667,7 +667,6 @@ footer{
 
 
 .container-secteurs img {
-    position: absolute;
     left: 45%;
-    top: 690%;
+    top:10px;
 }

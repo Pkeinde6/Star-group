@@ -90,7 +90,7 @@
             <div class="service-item">
                 <img src="https://thumbs.dreamstime.com/b/stylo-plume-avec-l-illustration-d-%C3%A9l%C3%A9ment-de-logo-ic%C3%B4ne-du-vecteur-encre-isol%C3%A9e-sur-le-fond-noir-feuille-isol%C3%A9-classique-185210448.jpg" width="100" style="border-radius: 50%;" alt="Icône stylisé de plume">
                 <h2>Design Graphique</h2>
-                <p>Une bonne communication passe par des insignes explicites  répondany aux exigences des codes couleurs. Nous extérioriserons vos goûts à travers une large gamme de concepte  branding 2D et 3D avec une impression numérique de qualité... <a href="">Voir plus</a></p>
+                <p>Une bonne communication passe par des insignes explicites  répondant aux exigences des codes couleurs. Nous extérioriserons vos goûts à travers une large gamme de concepte  branding 2D et 3D avec une impression numérique de qualité... <a href="">Voir plus</a></p>
             </div>
             <div class="service-item">
                 <img src="https://cbx-prod.b-cdn.net/COLOURBOX18689421.jpg?width=800&height=800&quality=70" width="100" style="border-radius: 50%;" alt="Icône représentant un écran de développement web">
