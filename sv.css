@@ -50,7 +50,6 @@ header {
     text-decoration: none;
     color: rgb(17, 17, 17);
     padding: 30px 40px;
-    font-weight: lighter;
 }
 
 .nav-bar a:hover {
@@ -128,7 +127,7 @@ header {
     background-color: #f0f0f0;
     padding: 10px;
     position: absolute;
-    top: 40%;
+    top: 50%;
     right:25%;
 }
 .main-title div {
@@ -162,5 +161,84 @@ header {
 }
 
 .service-text{
-    padding: 500px;
+    padding: 50px;
+    margin-top: -130px;
+}
+.s-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Permet aux éléments de passer à la ligne sur les petits écrans */
+    gap: 20px;
+    padding: 10px;
+}
+
+/* Style de chaque élément de service */
+.s-item {
+    border: solid 3px #f0f0f0; 
+    padding-right: 10px;
+    padding-top: -10px;
+    border-radius: 10px;
+    text-align: center;
+    width: 23%; /* Par défaut, chaque élément prend 23% de la largeur */
+    box-sizing: border-box;
+    
+}
+
+.s-item div{
+    padding: 20px;
+    border-radius: 10px;
+    background-color:#f0f0f0;
+    margin-left:-10%;
+    margin-top: -10%;
+    margin-bottom: 10%;
+}
+
+/* Image et texte des services */
+.s-item img {
+    border-radius: 50%;
+    margin-bottom: 10px;
+    background-color: black;
+}
+
+.s-item h2 {
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.s-item p {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.s-item a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-weight: bolder;
+}
+
+.s-item a:hover {
+    text-decoration: underline;
+}
+
+/* Survol des éléments de service */
+.s-item:hover {
+    background-color: rgba(255, 152, 0, 0.8);
+    color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Media Queries pour rendre le contenu responsive */
+
+/* Pour les écrans plus petits que 1024px, on ajuste les tailles des services */
+@media (max-width: 1024px) {
+    .s-item {
+        width: 45%; /* Deux éléments par ligne */
+    }
+}
+
+/* Pour les écrans plus petits que 768px, on passe à une seule colonne */
+@media (max-width: 768px) {
+    .s-item {
+        width: 100%; /* Un seul service par ligne */
+    }
 }
